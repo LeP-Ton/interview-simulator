@@ -4,7 +4,7 @@
 
 [打开 GitHub Pages 游戏](https://lep-ton.github.io/interview-simulator/) · [项目源码与部署](https://github.com/LeP-Ton/interview-simulator) · [原私有在线版](https://gamex-interview-simulator-261111.crud-boy.chatgpt.site)
 
-源码与 Pages 现统一到同一个公开仓库，单仓库部署正在调整和验证中。推送应用变更到 main 后，由 GitHub Actions 自动测试、构建及发布。旧 Pages 路径与新路径同源，可沿用原有存档；从原私有站点迁移时可在游戏设置中导出 JSON，再到新地址导入。
+源码与 Pages 已统一到同一个公开仓库，并通过完整部署和线上验证。推送应用变更到 main 后，由 GitHub Actions 自动测试、构建及发布。多余的原产物仓库已归档，旧链接自动跳转，原 Pages 存档可直接沿用；从原私有站点迁移时可在游戏设置中导出 JSON，再到新地址导入。
 
 ## 开始运行
 

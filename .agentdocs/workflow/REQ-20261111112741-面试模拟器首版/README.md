@@ -3,9 +3,9 @@
 ## 基本信息
 - 需求 ID：REQ-20261111112741。
 - 来源：用户提供的《GameX 面试模拟器开发提示词 V1.0》。
-- 状态：首版已完成，按用户要求调整为单仓库 Pages 部署；用户人工体验验收尚未执行。
-- 目标在线版本：[GitHub Pages 游戏](https://lep-ton.github.io/interview-simulator/)；[原私有游戏](https://gamex-interview-simulator-261111.crud-boy.chatgpt.site)。
-- 统一源码及部署仓库：[LeP-Ton/interview-simulator](https://github.com/LeP-Ton/interview-simulator)，本轮改为公开，同仓库构建与发布 Pages。
+- 状态：首版及单仓库 Pages 部署完成；用户人工体验验收尚未执行。
+- 在线版本：[GitHub Pages 游戏](https://lep-ton.github.io/interview-simulator/)；[原私有游戏](https://gamex-interview-simulator-261111.crud-boy.chatgpt.site)。
+- 统一源码及部署仓库：[LeP-Ton/interview-simulator](https://github.com/LeP-Ton/interview-simulator)，公开，同仓库构建与发布 Pages；旧产物仓库已归档。
 - 创建时间：2026-11-11 11:27:41，Asia/Shanghai。
 - 项目：面试模拟器，应用目录 `interview-simulator/`。
 - 关联聊天：2026-11-11《面试模拟器》开发；聊天 ID 未提供，会话-1 起。
@@ -39,7 +39,8 @@
 
 ## 待办与验收边界
 - 私有在线版本已发布成功，生产状态 `succeeded`，未改变默认私有受众。
-- GitHub Pages 和私有源码构建任务均成功；线上首页、JS、CSS、图标返回 200，实测新局、投递、跨日和刷新恢复通过。
+- 同仓库测试、构建及 Pages 发布均成功，38 项核心测试通过；新站首页、JS、CSS、图标均返回 200，浏览器运行异常为 0。
+- 旧入口已跳转，多余产物仓库已归档；实测旧路径第 2 天、1 份待预约投递的存档在新路径正确恢复，无需导出导入。
 - 等待用户实际体验反馈；不将开发者浏览器验证写成人工验收通过。
 - 算法与 Debug 为受限结构检查，不执行任意代码；技术回答由规则评分，不具备完整语义理解。
 - 更大题库、真实 AI、语音、云存档和其他职业属于后续扩展，见应用 TODO.md。
