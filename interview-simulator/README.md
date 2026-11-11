@@ -18,9 +18,17 @@ npm run preview
 
 ### GitHub Pages 部署
 
-仓库根目录的 `.github/workflows/pages.yml` 在推送到 `main` 或手动触发时，使用 Node.js 22 和公共 npm 安装锁定依赖，依次执行测试、类型检查、生产构建及 Pages 发布。应用仍位于 `interview-simulator/` 子目录。
+完整源码保存在私有仓库。根目录 `.github/workflows/build.yml` 在推送到 `main` 或手动触发时，使用 Node.js 22 和公共 npm 安装锁定依赖，依次执行测试、类型检查、生产构建，并将网站产物保存在私有工作流中。
 
-Vite 的 `base` 为 `./`，脚本、样式与图标均使用相对路径，适配仓库子路径。仓库 Pages 的发布源需选择 GitHub Actions。公开部署使用独立域名，本地存档按浏览器来源隔离；需要延续已有进度时，在旧地址导出 JSON，再到新地址导入。
+公开的 `interview-simulator-pages` 仓库仅包含构建后的 HTML、JavaScript、CSS 和图标，不包含 TypeScript 源文件、项目文档、配置或源码映射。该仓库从 `main` 分支根目录发布 GitHub Pages。更新网站前，确保本机 `gh auth status` 正常，然后在应用目录执行：
+
+```bash
+npm run publish:pages
+```
+
+发布脚本只校验、复制 `dist/` 中允许的网页文件，保留公开仓库的提交历史，不保存凭据。当前 GitHub 套餐不支持从私有仓库启用 Pages，因此使用独立产物仓库。
+
+Vite 的 `base` 为 `./`，脚本、样式与图标均使用相对路径，适配仓库子路径。公开部署使用独立域名，本地存档按浏览器来源隔离；需要延续已有进度时，在旧地址导出 JSON，再到新地址导入。
 
 ## 如何游玩
 
