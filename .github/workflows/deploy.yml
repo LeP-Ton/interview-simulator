@@ -1,25 +1,28 @@
-name: 验证面试模拟器构建
+name: 构建与发布 GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
       - interview-simulator/**
-      - .github/workflows/build.yml
+      - .github/workflows/deploy.yml
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: build-${{ github.ref }}
-  cancel-in-progress: true
+  group: github-pages
+  cancel-in-progress: false
 
 jobs:
   build:
     name: 测试与构建
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: read
     defaults:
       run:
         working-directory: interview-simulator
@@ -43,9 +46,26 @@ jobs:
       - name: 类型检查与生产构建
         run: npm run build
 
-      - name: 保存网站构建产物
-        uses: actions/upload-artifact@v4
+      - name: 读取 Pages 配置
+        uses: actions/configure-pages@v5
+
+      - name: 上传网页构建产物
+        uses: actions/upload-pages-artifact@v4
         with:
-          name: interview-simulator-web
           path: interview-simulator/dist
-          retention-days: 7
+
+  deploy:
+    name: 发布游戏
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 发布至 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

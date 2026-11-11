@@ -18,17 +18,11 @@ npm run preview
 
 ### GitHub Pages 部署
 
-完整源码保存在私有仓库。根目录 `.github/workflows/build.yml` 在推送到 `main` 或手动触发时，使用 Node.js 22 和公共 npm 安装锁定依赖，依次执行测试、类型检查、生产构建，并将网站产物保存在私有工作流中。
+完整项目源码与 Pages 共用 [LeP-Ton/interview-simulator](https://github.com/LeP-Ton/interview-simulator) 一个公开仓库。根目录 `.github/workflows/deploy.yml` 在推送到 `main` 或手动触发时，使用 Node.js 22 和公共 npm 安装锁定依赖，依次执行测试、类型检查、生产构建，并将产物直接发布到同一仓库的 GitHub Pages。
 
-公开的 `interview-simulator-pages` 仓库仅包含构建后的 HTML、JavaScript、CSS 和图标，不包含 TypeScript 源文件、项目文档、配置或源码映射。该仓库从 `main` 分支根目录发布 GitHub Pages。更新网站前，确保本机 `gh auth status` 正常，然后在应用目录执行：
+网站地址为 [https://lep-ton.github.io/interview-simulator/](https://lep-ton.github.io/interview-simulator/)。后续更新只需将应用变更推送到本仓库 `main`，不需要复制产物或维护第二个仓库。也可在仓库 Actions 页面手动运行“构建与发布 GitHub Pages”。Pages 的发布源为 GitHub Actions。
 
-```bash
-npm run publish:pages
-```
-
-发布脚本只校验、复制 `dist/` 中允许的网页文件，保留公开仓库的提交历史，不保存凭据。当前 GitHub 套餐不支持从私有仓库启用 Pages，因此使用独立产物仓库。
-
-Vite 的 `base` 为 `./`，脚本、样式与图标均使用相对路径，适配仓库子路径。公开部署使用独立域名，本地存档按浏览器来源隔离；需要延续已有进度时，在旧地址导出 JSON，再到新地址导入。
+Vite 的 `base` 为 `./`，脚本、样式与图标均使用相对路径，适配仓库子路径。旧 `/interview-simulator-pages/` 与新路径属于同一浏览器来源，存储键保持不变，因此可沿用原 Pages 存档；从原私有站点迁移时仍需通过 JSON 导出、导入。
 
 ## 如何游玩
 

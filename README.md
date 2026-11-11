@@ -2,9 +2,9 @@
 
 一款以电脑桌面为舞台的 30 天求职策略游戏。程序员职业可完整游玩：调查企业、打磨简历、投递预约、完成四类面试、协商薪资、选择 Offer，并生成求职复盘。
 
-[打开 GitHub Pages 游戏](https://lep-ton.github.io/interview-simulator-pages/) · [源码仓库（私有）](https://github.com/LeP-Ton/interview-simulator) · [原私有在线版](https://gamex-interview-simulator-261111.crud-boy.chatgpt.site)
+[打开 GitHub Pages 游戏](https://lep-ton.github.io/interview-simulator/) · [项目源码与部署](https://github.com/LeP-Ton/interview-simulator) · [原私有在线版](https://gamex-interview-simulator-261111.crud-boy.chatgpt.site)
 
-GitHub Pages 已发布并通过线上验证。完整源文件与项目文档保持私有，公开 Pages 仓库只包含网页构建产物。旧地址的存档不会自动跨域迁移，可在游戏设置中导出 JSON，再到新地址导入。
+源码与 Pages 现统一到同一个公开仓库，单仓库部署正在调整和验证中。推送应用变更到 main 后，由 GitHub Actions 自动测试、构建及发布。旧 Pages 路径与新路径同源，可沿用原有存档；从原私有站点迁移时可在游戏设置中导出 JSON，再到新地址导入。
 
 ## 开始运行
 

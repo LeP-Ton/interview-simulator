@@ -3,9 +3,9 @@
 ## 基本信息
 - 需求 ID：REQ-20261111112741。
 - 来源：用户提供的《GameX 面试模拟器开发提示词 V1.0》。
-- 状态：首版及 GitHub Pages 发布完成；用户人工体验验收尚未执行。
-- 在线版本：[GitHub Pages 游戏](https://lep-ton.github.io/interview-simulator-pages/)；[原私有游戏](https://gamex-interview-simulator-261111.crud-boy.chatgpt.site)。
-- 源码仓库：[LeP-Ton/interview-simulator](https://github.com/LeP-Ton/interview-simulator)，私有；公开网站仓库仅保存构建产物。
+- 状态：首版已完成，按用户要求调整为单仓库 Pages 部署；用户人工体验验收尚未执行。
+- 目标在线版本：[GitHub Pages 游戏](https://lep-ton.github.io/interview-simulator/)；[原私有游戏](https://gamex-interview-simulator-261111.crud-boy.chatgpt.site)。
+- 统一源码及部署仓库：[LeP-Ton/interview-simulator](https://github.com/LeP-Ton/interview-simulator)，本轮改为公开，同仓库构建与发布 Pages。
 - 创建时间：2026-11-11 11:27:41，Asia/Shanghai。
 - 项目：面试模拟器，应用目录 `interview-simulator/`。
 - 关联聊天：2026-11-11《面试模拟器》开发；聊天 ID 未提供，会话-1 起。
@@ -29,11 +29,13 @@
 - 已实现四类独立挑战、动态追问、完整两轮面试、招聘竞争、谈薪、30 天报告和同种子本地纪录。
 - 38 项自动测试通过；严格类型检查和生产构建通过；桌面完整流程及手机七个页面均已检查。
 - 独立分析师测试模块使用单轮流程和自己的「因果推断」维度，验证无需重写公共系统；该模块不作为已实现可玩内容展示。
+- 用户在会话-19 明确要求单仓库部署；当前采用 `.github/workflows/deploy.yml` 在同一公开仓库测试、构建并发布，替代先前双仓库方案。
 
 ## 阶段记录
 - [功能实现](20261111112741-功能实现.md)：架构、交互、核心规则、验证证据；关联会话-1 起。
 
 - [20261111130740-GitHubPages发布](20261111130740-GitHubPages发布.md)：新增 GitHub Pages 自动部署；会话-13 起。
+- [单仓库部署调整](20261111132220-单仓库部署调整.md)：按用户要求统一源码与 Pages；会话-19 起，替代双仓库发布架构。
 
 ## 待办与验收边界
 - 私有在线版本已发布成功，生产状态 `succeeded`，未改变默认私有受众。
