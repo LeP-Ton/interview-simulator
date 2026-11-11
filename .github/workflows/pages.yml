@@ -1,0 +1,61 @@
+name: 发布面试模拟器到 GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - interview-simulator/**
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: 测试、构建与发布
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    defaults:
+      run:
+        working-directory: interview-simulator
+    steps:
+      - name: 检出源码
+        uses: actions/checkout@v6
+
+      - name: 配置 Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: interview-simulator/package-lock.json
+
+      - name: 安装锁定版本依赖
+        run: npm ci
+
+      - name: 运行核心测试
+        run: npm test
+
+      - name: 类型检查与生产构建
+        run: npm run build
+
+      - name: 配置 GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传网站构建产物
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: interview-simulator/dist
+
+      - name: 发布到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
